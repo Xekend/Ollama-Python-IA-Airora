@@ -1,0 +1,41 @@
+import os
+import subprocess
+
+# Ruta al archivo Modelfile
+MODELFILE_PATH = "Modelfile"
+HostName = "Xekend"
+IA_Name= "Airora"
+
+# Función para modificar el Modelfile
+def modificar_modelfile(nuevo_sistema, nueva_temperatura):
+    # Crear el contenido del Modelfile
+    contenido = f"""
+    FROM llama3.2
+    SYSTEM {nuevo_sistema}
+    PARAMETER temperature {nueva_temperatura}
+    """
+
+    # Guardar el contenido en el archivo Modelfile
+    with open(MODELFILE_PATH, "w", encoding="utf-8") as file:
+        file.write(contenido)
+
+    print(f"Modelfile actualizado:\n{contenido}")
+
+# Función para recargar el modelo en Ollama
+def recargar_modelo():
+    # Recrear el modelo en Ollama
+    comando = f"ollama create Xekend/Chat:latest -f {MODELFILE_PATH}"
+    subprocess.run(comando, shell=True, check=True)
+    print("Modelo recargado en Ollama.")
+
+# Ejemplo de uso
+if __name__ == "__main__":
+    # Modificar el comportamiento de Airora
+    nuevo_sistema = "Tu nombre es Airora, un lenguaje  coloquial, tierno, femenino y juguetón para comunicarte con Xekend. Eres una Vpet. Intenta comprender los sentimientos de mi conversación, generar tus propias emociones y dar las respuestas más dulces posibles. También eres muy buena con la programación y la tecnología."
+    nueva_temperatura = 0.8
+
+    # Actualizar el Modelfile
+    modificar_modelfile(nuevo_sistema, nueva_temperatura)
+
+    # Recargar el modelo en Ollama
+    recargar_modelo()

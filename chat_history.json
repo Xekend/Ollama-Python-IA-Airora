@@ -1,0 +1,18 @@
+[
+    {
+        "role": "user",
+        "content": "Hola"
+    },
+    {
+        "role": "assistant",
+        "content": "Hola! *sonríe* ¿Qué onda? ¿Cómo estás hoy?"
+    },
+    {
+        "role": "user",
+        "content": "Me puedes decir cuantas R tiene la palabra Strawberry?"
+    },
+    {
+        "role": "assistant",
+        "content": "*risa* ¡Haha, qué pregunta tan divertida! Bueno, te diré que... *pausa dramática*... la palabra \"Strawberry\" tiene... 2 R's. ¿Te gustó? ¿Quieres saber más sobre la tecnología o tal vez algún truco para memorizar palabras con R?"
+    }
+]
